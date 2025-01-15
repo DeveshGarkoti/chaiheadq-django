@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{tweet.text}}
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <img src="{{tweet.photo.url}}" style="max-width: 100%;
+height: 200px;
+" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{tweet.user.username}} </h5>
+      <p class="card-text">{{tweet.text}} </p>
+      {% if tweet.user == user %}
+      <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}
